@@ -6,9 +6,13 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleHomeClick = () => {
     navigate('/');}
-    const handleExploreClick = () => {
+  const handleExploreClick = () => {
       navigate('/explore');
     }
+  const handleChatClick = () => {
+      navigate('/chatbot');
+    }
+  
 
   return (
     <nav className="navbar">
@@ -19,7 +23,7 @@ const Navbar = () => {
         <li onClick={handleHomeClick}>Home</li>
         <li onClick={handleExploreClick}>Explore</li>
         <li>Museum</li>
-        <li>ChatBot</li>
+        <li onClick={handleChatClick}>ChatBot</li>
         <li>Contact</li>
       </ul>
       <div className="navbar-title">ANCIENT EGYPT</div>

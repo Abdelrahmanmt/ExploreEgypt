@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import YearEvent from "./components/YearEvent";
 import Event2 from "./components/Event2";
 import "./App.css";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   const location = useLocation(); // Get the current location for route-specific animations
@@ -21,6 +22,7 @@ function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/year-event" element={<YearEvent />} />
           <Route path="/event2" element={<Event2 />} />
+          <Route path="/chatbot" element={<ChatBot />} />
         
         </Routes>
       </AnimatePresence>
