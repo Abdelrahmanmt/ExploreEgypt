@@ -65,7 +65,6 @@
   box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.3);
   border-style: ;
   width: 100%; /* Make the image fit the card width */
-  height: auto; /* Maintain aspect ratio */
   border-radius: 10px;
 }
 

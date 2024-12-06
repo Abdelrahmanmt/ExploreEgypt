@@ -9,6 +9,10 @@ import YearEvent from "./components/YearEvent";
 import Event2 from "./components/Event2";
 import "./App.css";
 import ChatBot from "./components/ChatBot";
+import Event4 from "./components/Event4";
+import Event3 from "./components/Event3";
+import Contact from "./components/Contact";
+
 
 function App() {
   const location = useLocation(); // Get the current location for route-specific animations
@@ -23,7 +27,9 @@ function App() {
           <Route path="/year-event" element={<YearEvent />} />
           <Route path="/event2" element={<Event2 />} />
           <Route path="/chatbot" element={<ChatBot />} />
-        
+          <Route path="event4" element={<Event4 />} />
+          <Route path="event3" element={<Event3 />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </AnimatePresence>
       <Footer />

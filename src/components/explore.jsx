@@ -15,32 +15,40 @@ const Explore = () => {
     navigate("/event2");
   };
 
+  const handleEvent4click = () => {
+    navigate("/event4");
+  };
+  const handleEvent3click = () => {
+    navigate("/event3");
+  };
 
   const events = [
     {
         function: handleExploreClick1,
         title: "Construction of the Pyramids",
         id: "pyramids-construction",
-        pic: "main-qimg-df76d8796bec77f9bd87d2077bbb87e6-lq.jpg",
+        pic: "DALL·E 2024-12-06 20.02.11 - A realistic and detailed depiction of the construction of the pyramids of Giza in ancient Egypt. The scene shows workers in traditional ancient Egypti.webp",
         subtitle: "The Great Pyramids of Giza were built during Egypt's Old Kingdom, under Pharaohs Khufu, Khafre, and Menkaure. These monuments stand as a testament to ancient architectural skill and remain one of the Seven Wonders of the Ancient World."
     },
     {
         function: handleEvent2click1,
         title: "Reign of Tutankhamun",
         id: "reign-tutankhamun",
-        pic: "Tutankhamun.webp",
+        pic: "tutankhamun-ai-artwork-372_1024x1024-transformed.webp",
         subtitle: "Tutankhamun, the boy king of the 18th dynasty, ruled during the New Kingdom. He is most famous for his intact tomb, filled with treasures, which was discovered by Howard Carter in 1922."
     },
     {
-        title: "Battle of Kadesh",
-        id: "battle-kadesh",
-        pic: "main-qimg-df76d8796bec77f9bd87d2077bbb87e6-lq.jpg",
-        subtitle: "Ramses II led the Egyptian forces in the Battle of Kadesh (c. 1274 BC) against the Hittites. This iconic conflict is celebrated as one of the largest chariot battles in history and resulted in one of the first known peace treaties."
+      function: handleEvent3click,
+      title: "Ramses II: The Great Builder",
+      id: "ramses-ii",
+      pic: "Ramses-II.jpg", // Update the image path to match Ramses II-related artifacts
+      subtitle: "Ramses II, also known as 'Ramses the Great,' reigned during Egypt's 19th Dynasty (1279–1213 BCE). Famous for his military campaigns, monumental architecture, and diplomacy, he is celebrated as one of ancient Egypt's most powerful and enduring pharaohs. His legacy includes the temples at Abu Simbel and the Ramesseum, and the peace treaty with the Hittites following the Battle of Kadesh."
     },
     {
-        title: "Cleopatra VII's Reign",
-        id: "cleopatra-reign",
-        pic: "main-qimg-df76d8796bec77f9bd87d2077bbb87e6-lq.jpg",
+        function: handleEvent4click,
+        title: "Reign of Thutmose III",
+        id: "thutmose-reign",
+        pic: "Thutmosis_III-2.jpg",
         subtitle: "Cleopatra VII, the last ruler of the Ptolemaic Dynasty, played a key role in Roman politics. Her reign ended with her death in 30 BC, marking the conclusion of ancient Egyptian sovereignty."
     }
 ];

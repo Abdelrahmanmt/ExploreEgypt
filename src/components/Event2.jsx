@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.css"; // Reuse HeroSection styles
 import { motion } from "framer-motion"; // Framer Motion for animations
@@ -20,7 +21,7 @@ const Event2 = () => {
   };
 
   const handleEvent2click = () => {
-    detailsRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the detailed section
+    navigate('/event3') // Smooth scroll to the detailed section
   };
   const navigate = useNavigate();
   const handleBackClick = () => {

@@ -12,6 +12,9 @@ const Navbar = () => {
   const handleChatClick = () => {
       navigate('/chatbot');
     }
+  const handleContactClick = () => {
+      navigate('/contact');
+    }
   
 
   return (
@@ -24,7 +27,7 @@ const Navbar = () => {
         <li onClick={handleExploreClick}>Explore</li>
         <li>Museum</li>
         <li onClick={handleChatClick}>ChatBot</li>
-        <li>Contact</li>
+        <li onClick={handleContactClick}>Contact</li>
       </ul>
       <div className="navbar-title">ANCIENT EGYPT</div>
     </nav>
