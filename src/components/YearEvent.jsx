@@ -102,6 +102,7 @@ const YearEvent = () => {
   <div
     className="sketchfab-embed-wrapper"
     style={{
+      marginRight: "20px",
       width: "100%",
       height: "650px", // Adjust height if needed
       borderRadius: "10px",
@@ -115,7 +116,7 @@ const YearEvent = () => {
       mozallowfullscreen="true"
       webkitallowfullscreen="true"
       allow="autoplay; fullscreen; xr-spatial-tracking"
-      src="https://sketchfab.com/models/710ce0d3291f4e0ca054482de637028c/embed?&autostart=1&preload=1&transparent=1&ui_theme=dark&dnt=1"
+      src="https://sketchfab.com/models/710ce0d3291f4e0ca054482de637028c/embed?&autostart=1&transparent=1&ui_theme=dark&dnt=1"
       style={{
         width: "100%",
         height: "100%",

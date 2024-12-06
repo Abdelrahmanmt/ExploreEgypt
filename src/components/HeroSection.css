@@ -48,12 +48,17 @@
   }
   
   /* Hover State */
-  .hero-highlight:hover, .hero-title:hover, .eventTitle:hover {
+  .hero-highlight:hover, .hero-title:hover {
     color: rgb(210, 174, 46, 1);
     text-shadow: 0px 4px 8px rgba(210, 174, 46, 0.5); /* Subtle glowing effect */
     transform: scale(1.2); /* Scale the text */
   }
-  
+
+  .eventTitle:hover {
+    color: rgb(210, 174, 46, 1);
+    text-shadow: 0px 4px 8px rgba(210, 174, 46, 0.5); /* Subtle glowing effect */
+    transform: scale(1.1); /* Scale the text */
+  }
   
 
 .hero-description{
@@ -132,7 +137,7 @@ margin-bottom: 20px;
 .extraTitle h1:hover {
     color: rgb(210, 174, 46, 0.7);
     text-shadow: 0px 4px 8px rgba(210, 174, 46, 0.5); /* Subtle glowing effect */
-    transform: scale(1.2); /* Scale the text */
+    transform: scale(1.1); /* Scale the text */
   }
 
 .extraTitle p{
