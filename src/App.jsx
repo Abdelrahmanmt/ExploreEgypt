@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import Navbar from "./components/Navbar";
@@ -12,27 +12,30 @@ import ChatBot from "./components/ChatBot";
 import Event4 from "./components/Event4";
 import Event3 from "./components/Event3";
 import Contact from "./components/Contact";
-
+import About from "./pages/About";
 
 function App() {
   const location = useLocation(); // Get the current location for route-specific animations
 
   return (
     <div className="App">
-      <Navbar />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HeroSection />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/year-event" element={<YearEvent />} />
-          <Route path="/event2" element={<Event2 />} />
-          <Route path="/chatbot" element={<ChatBot />} />
-          <Route path="event4" element={<Event4 />} />
-          <Route path="event3" element={<Event3 />} />
-          <Route path="contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
-      <Footer />
+      <div className="container">
+        <Navbar />
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HeroSection />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/year-event" element={<YearEvent />} />
+            <Route path="/event2" element={<Event2 />} />
+            <Route path="/chatbot" element={<ChatBot />} />
+            <Route path="event4" element={<Event4 />} />
+            <Route path="event3" element={<Event3 />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+          </Routes>
+        </AnimatePresence>
+        <Footer />
+      </div>
     </div>
   );
 }
