@@ -12,6 +12,8 @@ import ChatBot from "./components/ChatBot";
 import Event4 from "./components/Event4";
 import Event3 from "./components/Event3";
 import Contact from "./components/Contact";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="event4" element={<Event4 />} />
           <Route path="event3" element={<Event3 />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </AnimatePresence>
       <Footer />
