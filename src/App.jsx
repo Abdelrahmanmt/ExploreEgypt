@@ -14,6 +14,7 @@ import Event3 from "./components/Event3";
 import Contact from "./components/Contact";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import ArtifactExplorer from "./components/ArtifactExplorer";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="artifact-explorer" element={<ArtifactExplorer />} />
         </Routes>
       </AnimatePresence>
       <Footer />

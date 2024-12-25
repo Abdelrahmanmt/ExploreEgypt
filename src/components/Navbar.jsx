@@ -36,6 +36,10 @@ const Navbar = () => {
   const handleLoginClick = () => {
     navigate('/login');
   };
+  
+  const handleMuseumClick = () => {
+    navigate('/artifact-explorer');
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Clear the token
@@ -53,6 +57,8 @@ const Navbar = () => {
         <li onClick={handleExploreClick}>Explore</li>
         <li onClick={handleChatClick}>ChatBot</li>
         <li onClick={handleContactClick}>Contact</li>
+        <li onClick={handleMuseumClick}>Museum</li>
+
       </ul>
       <div className="navbar-title">
         <button
