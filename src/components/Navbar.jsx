@@ -1,59 +1,99 @@
 /* eslint-disable no-restricted-globals */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import "./Navbar.css";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [openMenu, setOpenMenu] = useState(false);
-  const links = [
-    { id: crypto.randomUUID(), title: "Explore", to: "/explore" },
-    { id: crypto.randomUUID(), title: "ChatBot", to: "/chatbot" },
-    { id: crypto.randomUUID(), title: "Contact", to: "/contact" },
-    { id: crypto.randomUUID(), title: "About Us", to: "/about" },
-  ];
+  const navigate = useNavigate();
+
+  // Check if the user is logged in
+  const isLoggedIn = !!localStorage.getItem("token");
+
+  const handleHomeClick = () => {
+    navigate("/");
+  };
+
+  const handleExploreClick = () => {
+    navigate("/explore");
+  };
+
+  const handleChatClick = () => {
+    if (isLoggedIn) {
+      navigate("/chatbot");
+    } else {
+      alert("Please log in to access the ChatBot.");
+      navigate("/login");
+    }
+  };
+
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
+
+  const handleRegisterClick = () => {
+    navigate("/register");
+  };
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
+  const handleMuseumClick = () => {
+    navigate("/artifact-explorer");
+  };
+  const handleAboutClick = () => {
+    navigate("/about");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Clear the token
+    alert("You have been logged out."); // Provide feedback
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
-    <header className="py-4">
-      <div className="container">
-        <nav className="navbar !px-0">
-          <div
-            onClick={() => setOpenMenu(true)}
-            className="lg:hidden cursor-pointer"
-          >
-            <Bars3Icon className="text-white w-6 h-6" />
-          </div>
-          <div className="navbar-menu">
-            <Link to="/">Logo</Link>
-          </div>
-          <ul
-            className={`fixed lg:static top-0 ${
-              openMenu ? "left-0 z-50" : "-left-full"
-            } px-10 py-20 lg:p-0 bg-black lg:bg-transparent transition-all duration-200 h-full lg:h-auto flex-col lg:flex-row w-full lg:w-auto flex items-start lg:items-center lg:justify-center gap-10 flex-1`}
-          >
-            <div
-              onClick={() => setOpenMenu(false)}
-              className="lg:hidden absolute right-10 cursor-pointer"
-            >
-              <XMarkIcon className="text-white w-6 h-6" />
-            </div>
-            {links.map((link) => (
-              <li>
-                <Link
-                  to={link.to}
-                  style={{
-                    color: location.pathname === link.to ? "#FFD400" : "",
-                  }}
-                  onClick={() => setOpenMenu(false)}
-                  className="hover:text-[#FFD400] transition-colors duration-200"
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <nav className="navbar">
+      <div className="navbar-menu">
+        <img src="./images/icon-menu.png" alt="" onClick={handleHomeClick} />
       </div>
-    </header>
+      <ul className="navbar-links">
+        <li onClick={handleHomeClick}>Home</li>
+        <li onClick={handleExploreClick}>Explore</li>
+        <li onClick={handleChatClick}>ChatBot</li>
+        <li onClick={handleContactClick}>Contact</li>
+        <li onClick={handleMuseumClick}>Museum</li>
+        <li onClick={handleAboutClick}>About</li>
+      </ul>
+      <div className="navbar-title">
+        <button
+          className="auth-button"
+          onClick={isLoggedIn ? handleLogout : handleLoginClick}
+          style={{
+            marginLeft: "20px",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            backgroundColor: isLoggedIn ? "#ffd700" : "transparent",
+            color: isLoggedIn ? "#000" : "#ffd700",
+            border: "2px solid #ffd700",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => (
+            (e.target.style.backgroundColor = "#ffd700"),
+            (e.target.style.color = "#000")
+          )}
+          onMouseLeave={(e) => (
+            (e.target.style.backgroundColor = isLoggedIn
+              ? "#ffd700"
+              : "transparent"),
+            (e.target.style.color = isLoggedIn ? "#000" : "#ffd700")
+          )}
+        >
+          {isLoggedIn ? "Logout" : "Login"}
+        </button>
+      </div>
+    </nav>
   );
 };
 

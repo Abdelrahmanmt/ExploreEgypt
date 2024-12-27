@@ -10,7 +10,9 @@ const YearEvent = () => {
   const mountRef = useRef(null); // Reference to the Three.js container
   const { eventId } = useParams();
   const detailsRef = useRef(null); // Reference to the detailed section
+  const audioRef = useRef(null); // Reference to the audio element
   const [modalImage, setModalImage] = useState(null); // State for modal image
+  const [isPlaying, setIsPlaying] = useState(false); // State for audio playback
 
   const handleExploreClick = () => {
     detailsRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the detailed section
@@ -19,6 +21,18 @@ const YearEvent = () => {
 
   const handleEvent2click = () => {
     navigate("/event2"); // Navigate to the next event
+  };
+
+  const toggleAudioPlayback = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
   };
 
   const openModal = (imageSrc) => {
@@ -231,7 +245,6 @@ const YearEvent = () => {
           ))}
         </div>
       </section>
-
       {/* Modal */}
       {modalImage && (
         <div

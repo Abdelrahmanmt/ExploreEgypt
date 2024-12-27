@@ -5,6 +5,7 @@ import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
 import { Link, useNavigate } from "react-router-dom";
+import FloatingButton from "./FloatingButton";
 
 const Event4 = () => {
   useEffect(() => {
@@ -144,6 +145,7 @@ const Event4 = () => {
 
   return (
     <>
+      <FloatingButton />
       <motion.section
         className="hero-section"
         variants={containerVariants}
