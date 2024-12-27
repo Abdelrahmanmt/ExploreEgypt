@@ -3,7 +3,7 @@ import ParticlesComponent from "../components/particles";
 
 function About() {
   return (
-    <>
+    <div className="container">
       <ParticlesComponent className="parts" />
 
       <div className="flex flex-col lg:flex-row justify-between gap-4 pt-20">
@@ -49,7 +49,7 @@ function About() {
           <Overlay />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

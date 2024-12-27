@@ -1,0 +1,75 @@
+.artifact-explorer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .artifact-viewer {
+    width: 100%;
+    max-width: 1000px;
+    height: 850px; /* Updated height */
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2; /* Ensure model viewer is above particles */
+    position: relative;
+  }
+  
+  .artifact-canvas {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .artifact-info {
+    margin-top: 20px;
+    color: rgb(210, 174, 46, 0.6); /* Updated text color */
+    z-index: 3; /* Ensure text is above particles */
+    position: relative;
+  }
+  
+  .artifact-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: rgb(210, 174, 46, 0.6); /* Updated color */
+  }
+  
+  .artifact-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .artifact-controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    z-index: 3; /* Ensure buttons are above particles */
+    position: relative;
+  }
+  
+  .artifact-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background-color: rgb(210, 174, 46, 0.6); /* Updated button color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+  }
+  
+  .artifact-button:hover {
+    background-color: #e6c200;
+    transform: scale(1.1);
+  }
+  
+  .artifact-button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Particles styling */
+  
+  
