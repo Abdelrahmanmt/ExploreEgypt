@@ -1,17 +1,16 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.css"; // Reuse HeroSection styles
 import { motion } from "framer-motion"; // Framer Motion for animations
 import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FloatingButton from "./FloatingButton";
 
 const Event4 = () => {
   useEffect(() => {
     // Scroll to the top of the page when the component is mounted
-    window.scrollTo({top:0, behavior:'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   const mountRef = useRef(null); // Reference to the Three.js container
   const detailsRef = useRef(null); // Reference to the detailed section
@@ -22,11 +21,11 @@ const Event4 = () => {
   };
 
   const handleEvent4click = () => {
-   navigate('/') // Smooth scroll to the detailed section
+    navigate("/"); // Smooth scroll to the detailed section
   };
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate('/year-event') // Smooth scroll to the detailed section
+    navigate("/year-event"); // Smooth scroll to the detailed section
   };
 
   const openModal = (imageSrc) => {
@@ -49,7 +48,10 @@ const Event4 = () => {
     camera.position.set(0, 1.5, 4); // Adjust the camera to eye level and face the object directly
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Transparent background
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
     mountRef.current.appendChild(renderer.domElement);
 
     // Add ambient light and directional light
@@ -113,8 +115,12 @@ const Event4 = () => {
     // Handle resizing
     const handleResize = () => {
       if (mountRef.current) {
-        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        renderer.setSize(
+          mountRef.current.clientWidth,
+          mountRef.current.clientHeight
+        );
+        camera.aspect =
+          mountRef.current.clientWidth / mountRef.current.clientHeight;
         camera.updateProjectionMatrix();
       }
     };
@@ -139,7 +145,7 @@ const Event4 = () => {
 
   return (
     <>
-    <FloatingButton/>
+      <FloatingButton />
       <motion.section
         className="hero-section"
         variants={containerVariants}
@@ -171,44 +177,71 @@ const Event4 = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Thutmose III, often hailed as the "Napoleon of Egypt," was one of the most remarkable 
-            rulers of the 18th Dynasty. His reign marked the zenith of Egypt’s power, during which 
-            he conducted a series of military campaigns that expanded Egypt’s borders to their 
-            greatest extent.
+            Thutmose III, often hailed as the "Napoleon of Egypt," was one of
+            the most remarkable rulers of the 18th Dynasty. His reign marked the
+            zenith of Egypt’s power, during which he conducted a series of
+            military campaigns that expanded Egypt’s borders to their greatest
+            extent.
           </motion.p>
-          <motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
-            onClick={handleExploreClick}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+          <div className="flex items-center gap-4">
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
+              onClick={handleExploreClick}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              EXPLORE MORE
+            </motion.button>
+            <motion.div
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
+              onClick={() => console.log("Hello Ethar")}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Link
+                target="_blank"
+                to="https://maps.app.goo.gl/N7dZ7vV6RVKdbAuHA"
+              >
+                Location
+              </Link>
+            </motion.div>
+          </div>
+          <motion.div
+            className="hero-images border-none"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            EXPLORE MORE
-          </motion.button>
+            <div
+              ref={mountRef}
+              style={{
+                width: "100%",
+                height: "850px",
+                borderRadius: "10px",
+                overflow: "hidden",
+              }}
+            ></div>
+          </motion.div>
         </div>
-        <motion.div
-          className="hero-images"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div
-            ref={mountRef}
-            style={{
-              width: "100%",
-              height: "850px",
-              borderWidth: "10px",
-              borderRadius: "10px",
-              overflow: "hidden",
-            }}
-          ></div>
-        </motion.div>
       </motion.section>
-  
+
       {/* Detailed Section */}
       <section
         ref={detailsRef}
@@ -219,18 +252,27 @@ const Event4 = () => {
       >
         <h2 className="eventTitle">Thutmose III: Builder of an Empire</h2>
         <p className="eventText">
-          Thutmose III ascended the throne as a young boy but initially ruled under the regency 
-          of his stepmother and co-pharaoh Hatshepsut. Upon gaining full control, he led 
-          Egypt into an era of unparalleled military success. His campaigns into the Levant, 
-          Nubia, and Syria solidified Egypt’s dominance as a superpower of the ancient world.
+          Thutmose III ascended the throne as a young boy but initially ruled
+          under the regency of his stepmother and co-pharaoh Hatshepsut. Upon
+          gaining full control, he led Egypt into an era of unparalleled
+          military success. His campaigns into the Levant, Nubia, and Syria
+          solidified Egypt’s dominance as a superpower of the ancient world.
         </p>
         <p className="eventText">
-          Not just a warrior, Thutmose III was also a visionary statesman and builder. He 
-          constructed monumental temples such as those at Karnak, dedicated to Amun-Ra, and 
-          left behind a legacy of prosperity and unity. His achievements have been inscribed 
-          in the annals of history as a testament to his strategic acumen and leadership.
+          Not just a warrior, Thutmose III was also a visionary statesman and
+          builder. He constructed monumental temples such as those at Karnak,
+          dedicated to Amun-Ra, and left behind a legacy of prosperity and
+          unity. His achievements have been inscribed in the annals of history
+          as a testament to his strategic acumen and leadership.
         </p>
-        <p style={{ textAlign: "center", color: "#888", marginTop: "10px", fontStyle: "italic" }}>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#888",
+            marginTop: "10px",
+            fontStyle: "italic",
+          }}
+        >
           Click on an image to view it in detail.
         </p>
         <div
@@ -265,7 +307,7 @@ const Event4 = () => {
           ))}
         </div>
       </section>
-  
+
       {/* Modal */}
       {modalImage && (
         <div
@@ -295,28 +337,39 @@ const Event4 = () => {
           />
         </div>
       )}
-  
+
       <div className="eventExtra">
         <div className="extraTitle">
           <h1>Thutmose III's Obelisks</h1>
           <p>
-            Among the architectural wonders of Thutmose III’s reign were the majestic obelisks he 
-            erected to honor the gods and commemorate his victories. The inscriptions on these 
-            obelisks reveal his military prowess and his devotion to the divine. These towering 
-            structures symbolize Egypt’s enduring influence and Thutmose III’s place in history 
-            as one of its most illustrious leaders.
+            Among the architectural wonders of Thutmose III’s reign were the
+            majestic obelisks he erected to honor the gods and commemorate his
+            victories. The inscriptions on these obelisks reveal his military
+            prowess and his devotion to the divine. These towering structures
+            symbolize Egypt’s enduring influence and Thutmose III’s place in
+            history as one of its most illustrious leaders.
           </p>
           <p>
-            Many of Thutmose III's obelisks have been transported to distant lands, including 
-            Rome and Istanbul, serving as enduring monuments to his legacy and the reach of 
-            Egyptian culture.
+            Many of Thutmose III's obelisks have been transported to distant
+            lands, including Rome and Istanbul, serving as enduring monuments to
+            his legacy and the reach of Egyptian culture.
           </p>
-          <div style={{ margin: "20px", display: "flex", justifyContent: "space-between" }}>
+          <div
+            style={{
+              margin: "20px",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
             <motion.button
               className="hero-button"
               style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
               onClick={handleBackClick}
-              whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -328,7 +381,11 @@ const Event4 = () => {
               className="hero-button"
               style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
               onClick={handleEvent4click}
-              whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -339,7 +396,7 @@ const Event4 = () => {
           </div>
         </div>
         <div
-          className="extraModel"
+          className="extraModel border-none"
           style={{
             width: "100%",
             height: "400px",
@@ -350,7 +407,6 @@ const Event4 = () => {
       </div>
     </>
   );
-  
 };
 
 export default Event4;

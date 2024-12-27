@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./HeroSection.css"; // Reuse HeroSection styles
 import { motion } from "framer-motion"; // Framer Motion for animations
 import * as THREE from "three"; // Import Three.js
@@ -8,16 +8,16 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // Fo
 
 const YearEvent = () => {
   const mountRef = useRef(null); // Reference to the Three.js container
+  const { eventId } = useParams();
   const detailsRef = useRef(null); // Reference to the detailed section
   const audioRef = useRef(null); // Reference to the audio element
   const [modalImage, setModalImage] = useState(null); // State for modal image
   const [isPlaying, setIsPlaying] = useState(false); // State for audio playback
 
-  const navigate = useNavigate();
-
   const handleExploreClick = () => {
     detailsRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the detailed section
   };
+  const navigate = useNavigate();
 
   const handleEvent2click = () => {
     navigate("/event2"); // Navigate to the next event
@@ -84,49 +84,61 @@ const YearEvent = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            The Pyramids of Giza, constructed during Egypt's Old Kingdom, are among the most iconic
-            architectural achievements of the ancient world. Built as tombs for Pharaohs Khufu,
-            Khafre, and Menkaure, they stand as enduring symbols of Egypt’s grandeur and engineering
+            The Pyramids of Giza, constructed during Egypt's Old Kingdom, are
+            among the most iconic architectural achievements of the ancient
+            world. Built as tombs for Pharaohs Khufu, Khafre, and Menkaure, they
+            stand as enduring symbols of Egypt’s grandeur and engineering
             expertise.
           </motion.p>
-          <motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
-            onClick={handleExploreClick}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            EXPLORE MORE
-          </motion.button>
-
-          {/* Audio Playback Button */}
-          <motion.button
-            className="hero-button"
-            style={{
-              marginTop: "20px",
-              backgroundColor: isPlaying ? "#ff5555" : "rgb(210, 174, 46,0.6)",
-            }}
-            onClick={toggleAudioPlayback}
-            whileHover={{ scale: 1.1 }}
-          >
-            {isPlaying ? "Pause Voiceover" : "Play Voiceover"}
-          </motion.button>
-
-          {/* Hidden Audio Element */}
-          <audio ref={audioRef} src="/audio/giza.mp3" preload="auto" />
+          <div className="flex items-center gap-4">
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
+              onClick={handleExploreClick}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              EXPLORE MORE
+            </motion.button>
+            <motion.div
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
+              onClick={() => console.log("Hello Ethar")}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Link
+                target="_blank"
+                to="https://maps.app.goo.gl/mthJykNvHwZ1726z8"
+              >
+                Location
+              </Link>
+            </motion.div>
+          </div>
         </div>
         <motion.div
-          className="hero-images"
+          className="hero-images border-none"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.div
-            className="hero-images"
+            className="hero-images border-none "
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
@@ -137,7 +149,7 @@ const YearEvent = () => {
               style={{
                 marginRight: "20px",
                 width: "100%",
-                height: "650px",
+                height: "650px", // Adjust height if needed
                 borderRadius: "10px",
                 overflow: "hidden",
               }}
@@ -168,26 +180,36 @@ const YearEvent = () => {
           textAlign: "center",
         }}
       >
-        <h2 className="eventTitle">Pyramids of Giza: Wonders of the Ancient World</h2>
+        <h2 className="eventTitle">
+          Pyramids of Giza: Wonders of the Ancient World
+        </h2>
         <p className="eventText">
-          The Pyramids of Giza, constructed during the Old Kingdom around 2600–2500 BCE, are a
-          testament to the engineering prowess of ancient Egypt. Commissioned by Pharaohs Khufu,
-          Khafre, and Menkaure, these pyramids served as monumental tombs designed to honor their
-          reigns and ensure safe passage to the afterlife.
+          The Pyramids of Giza, constructed during the Old Kingdom around
+          2600–2500 BCE, are a testament to the engineering prowess of ancient
+          Egypt. Commissioned by Pharaohs Khufu, Khafre, and Menkaure, these
+          pyramids served as monumental tombs designed to honor their reigns and
+          ensure safe passage to the afterlife.
         </p>
         <p className="eventText">
-          The Great Pyramid of Khufu, the largest of the three, was considered one of the Seven
-          Wonders of the Ancient World and remains the only one still largely intact. These
-          architectural marvels were originally covered in polished limestone casing stones, which
-          shimmered in the sunlight, symbolizing divine radiance.
+          The Great Pyramid of Khufu, the largest of the three, was considered
+          one of the Seven Wonders of the Ancient World and remains the only one
+          still largely intact. These architectural marvels were originally
+          covered in polished limestone casing stones, which shimmered in the
+          sunlight, symbolizing divine radiance.
         </p>
         <p className="eventText">
-          Surrounding the pyramids are numerous smaller pyramids, mastabas, and the iconic Great
-          Sphinx, a guardian figure believed to represent Pharaoh Khafre. The Giza complex remains a
-          source of awe and wonder, representing the peak of ancient Egyptian civilization.
+          Surrounding the pyramids are numerous smaller pyramids, mastabas, and
+          the iconic Great Sphinx, a guardian figure believed to represent
+          Pharaoh Khafre. The Giza complex remains a source of awe and wonder,
+          representing the peak of ancient Egyptian civilization.
         </p>
         <p
-          style={{ textAlign: "center", color: "#888", marginTop: "10px", fontStyle: "italic" }}
+          style={{
+            textAlign: "center",
+            color: "#888",
+            marginTop: "10px",
+            fontStyle: "italic",
+          }}
         >
           Click on an image to view it in detail.
         </p>
@@ -257,17 +279,22 @@ const YearEvent = () => {
         <div className="extraTitle">
           <h1>The Great Pyramid of Khufu</h1>
           <p>
-            The Great Pyramid of Khufu stands as the largest pyramid ever constructed and was
-            originally 481 feet tall. Built using over 2.3 million limestone blocks, its precision
-            engineering continues to baffle archaeologists and engineers. The internal chambers,
-            including the King's Chamber, are architectural masterpieces that reflect the pharaoh's
-            vision of eternity.
+            The Great Pyramid of Khufu stands as the largest pyramid ever
+            constructed and was originally 481 feet tall. Built using over 2.3
+            million limestone blocks, its precision engineering continues to
+            baffle archaeologists and engineers. The internal chambers,
+            including the King's Chamber, are architectural masterpieces that
+            reflect the pharaoh's vision of eternity.
           </p>
           <motion.button
             className="hero-button"
             style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
             onClick={handleEvent2click}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
+            whileHover={{
+              scale: 1.1,
+              backgroundColor: "#ffd700",
+              color: "#000",
+            }}
             whileTap={{ scale: 0.9 }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -276,7 +303,7 @@ const YearEvent = () => {
             Next Event
           </motion.button>
         </div>
-        <div className="extraModel">
+        <div className="extraModel border-none">
           <img
             src="/images/2d5f2f2001f9d2853d1e0bd7fbf741da.jpg"
             style={{ width: "auto", borderRadius: "5px" }}

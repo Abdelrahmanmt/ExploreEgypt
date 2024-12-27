@@ -40,7 +40,11 @@ const Contact = () => {
           We’d love to hear from you! Feel free to reach out with any questions,
           feedback, or inquiries.
         </motion.p>
-        <form className="contact-form">
+        <form
+          action="https://formspree.io/f/xjkkyzrr"
+          method="POST"
+          className="contact-form"
+        >
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
@@ -73,7 +77,11 @@ const Contact = () => {
           </div>
           <motion.button
             className="contact-button"
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
+            whileHover={{
+              scale: 1.1,
+              backgroundColor: "#ffd700",
+              color: "#000",
+            }}
             whileTap={{ scale: 0.9 }}
             type="submit"
           >
