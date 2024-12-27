@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import Navbar from "./components/Navbar";
@@ -12,10 +12,10 @@ import ChatBot from "./components/ChatBot";
 import Event4 from "./components/Event4";
 import Event3 from "./components/Event3";
 import Contact from "./components/Contact";
+import About from "./pages/About";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ArtifactExplorer from "./components/ArtifactExplorer";
-
 
 function App() {
   const location = useLocation(); // Get the current location for route-specific animations
@@ -35,6 +35,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
+          <Route path="about" element={<About />} />
           <Route path="artifact-explorer" element={<ArtifactExplorer />} />
         </Routes>
       </AnimatePresence>

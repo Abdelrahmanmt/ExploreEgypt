@@ -1,6 +1,8 @@
-import React from "react";
-import './Navbar.css';
-import { useNavigate } from "react-router-dom";
+/* eslint-disable no-restricted-globals */
+import { Link, useNavigate } from "react-router-dom";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import "./Navbar.css";
+import { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,42 +11,42 @@ const Navbar = () => {
   const isLoggedIn = !!localStorage.getItem("token");
 
   const handleHomeClick = () => {
-    navigate('/');
+    navigate("/");
   };
 
   const handleExploreClick = () => {
-    navigate('/explore');
+    navigate("/explore");
   };
 
   const handleChatClick = () => {
     if (isLoggedIn) {
-      navigate('/chatbot');
+      navigate("/chatbot");
     } else {
       alert("Please log in to access the ChatBot.");
-      navigate('/login');
+      navigate("/login");
     }
   };
 
   const handleContactClick = () => {
-    navigate('/contact');
+    navigate("/contact");
   };
 
   const handleRegisterClick = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   const handleLoginClick = () => {
-    navigate('/login');
+    navigate("/login");
   };
-  
+
   const handleMuseumClick = () => {
-    navigate('/artifact-explorer');
+    navigate("/artifact-explorer");
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Clear the token
     alert("You have been logged out."); // Provide feedback
-    navigate('/login'); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (
@@ -58,7 +60,6 @@ const Navbar = () => {
         <li onClick={handleChatClick}>ChatBot</li>
         <li onClick={handleContactClick}>Contact</li>
         <li onClick={handleMuseumClick}>Museum</li>
-
       </ul>
       <div className="navbar-title">
         <button
@@ -74,13 +75,16 @@ const Navbar = () => {
             cursor: "pointer",
             transition: "all 0.3s ease",
           }}
-          onMouseEnter={(e) =>
-            (e.target.style.backgroundColor = "#ffd700", e.target.style.color = "#000")
-          }
-          onMouseLeave={(e) =>
-            (e.target.style.backgroundColor = isLoggedIn ? "#ffd700" : "transparent",
-             e.target.style.color = isLoggedIn ? "#000" : "#ffd700")
-          }
+          onMouseEnter={(e) => (
+            (e.target.style.backgroundColor = "#ffd700"),
+            (e.target.style.color = "#000")
+          )}
+          onMouseLeave={(e) => (
+            (e.target.style.backgroundColor = isLoggedIn
+              ? "#ffd700"
+              : "transparent"),
+            (e.target.style.color = isLoggedIn ? "#000" : "#ffd700")
+          )}
         >
           {isLoggedIn ? "Logout" : "Login"}
         </button>
