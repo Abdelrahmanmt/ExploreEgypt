@@ -1,16 +1,15 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.css"; // Reuse HeroSection styles
 import { motion } from "framer-motion"; // Framer Motion for animations
 import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Event2 = () => {
   useEffect(() => {
     // Scroll to the top of the page when the component is mounted
-    window.scrollTo({top:0, behavior:'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   const mountRef = useRef(null); // Reference to the Three.js container
   const detailsRef = useRef(null); // Reference to the detailed section
@@ -21,11 +20,11 @@ const Event2 = () => {
   };
 
   const handleEvent2click = () => {
-    navigate('/event3') // Smooth scroll to the detailed section
+    navigate("/event3"); // Smooth scroll to the detailed section
   };
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate('/year-event') // Smooth scroll to the detailed section
+    navigate("/year-event"); // Smooth scroll to the detailed section
   };
 
   const openModal = (imageSrc) => {
@@ -48,7 +47,10 @@ const Event2 = () => {
     camera.position.set(0, 1.5, 4); // Adjust the camera to eye level and face the object directly
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Transparent background
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
     mountRef.current.appendChild(renderer.domElement);
 
     // Add ambient light and directional light
@@ -112,8 +114,12 @@ const Event2 = () => {
     // Handle resizing
     const handleResize = () => {
       if (mountRef.current) {
-        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        renderer.setSize(
+          mountRef.current.clientWidth,
+          mountRef.current.clientHeight
+        );
+        camera.aspect =
+          mountRef.current.clientWidth / mountRef.current.clientHeight;
         camera.updateProjectionMatrix();
       }
     };
@@ -169,25 +175,52 @@ const Event2 = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            The tomb of Tutankhamun, the boy king, was discovered in the Valley of the Kings in 1922
-            by Howard Carter. It was one of the most significant archaeological finds of the 20th
-            century.
+            The tomb of Tutankhamun, the boy king, was discovered in the Valley
+            of the Kings in 1922 by Howard Carter. It was one of the most
+            significant archaeological finds of the 20th century.
           </motion.p>
-          <motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
-            onClick={handleExploreClick}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            EXPLORE MORE
-          </motion.button>
+          <div className="flex items-center gap-4">
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
+              onClick={handleExploreClick}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              EXPLORE MORE
+            </motion.button>
+            <motion.div
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
+              onClick={() => console.log("Hello Ethar")}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Link
+                target="_blank"
+                to="https://maps.app.goo.gl/F9rW9mLxfNv35fkN7"
+              >
+                Location
+              </Link>
+            </motion.div>
+          </div>
         </div>
         <motion.div
-          className="hero-images"
+          className="hero-images border-none"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
@@ -198,7 +231,6 @@ const Event2 = () => {
             style={{
               width: "100%",
               height: "400px",
-              borderWidth: "10px",
               borderRadius: "10px",
               overflow: "hidden",
             }}
@@ -215,23 +247,32 @@ const Event2 = () => {
       >
         <h2 className="eventTitle">Detailed Discovery</h2>
         <p className="eventText">
-          In November 1922, British archaeologist Howard Carter discovered the tomb of Tutankhamun
-          in the Valley of the Kings, Egypt. This tomb contained an array of unparalleled treasures,
-          including the iconic golden death mask, chariots, and jewelry.
+          In November 1922, British archaeologist Howard Carter discovered the
+          tomb of Tutankhamun in the Valley of the Kings, Egypt. This tomb
+          contained an array of unparalleled treasures, including the iconic
+          golden death mask, chariots, and jewelry.
         </p>
         <p className="eventText">
-          Tutankhamun, often referred to as the "Boy King," ruled for approximately 10 years during
-          the 18th Dynasty. His tomb's discovery was remarkable because it was found nearly intact,
-          offering valuable insights into ancient Egyptian art and culture.
+          Tutankhamun, often referred to as the "Boy King," ruled for
+          approximately 10 years during the 18th Dynasty. His tomb's discovery
+          was remarkable because it was found nearly intact, offering valuable
+          insights into ancient Egyptian art and culture.
         </p>
         <p className="eventText">
-          Among the artifacts were gilded furniture, alabaster jars, painted murals, and a
-          magnificent collection of jewelry, reflecting the craftsmanship and wealth of ancient
-          Egypt.
+          Among the artifacts were gilded furniture, alabaster jars, painted
+          murals, and a magnificent collection of jewelry, reflecting the
+          craftsmanship and wealth of ancient Egypt.
         </p>
-        <p style={{ textAlign: "center", color: "#888", marginTop: "10px", fontStyle: "italic" }}>
-  Click on an image to view it in detail.
-</p>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#888",
+            marginTop: "10px",
+            fontStyle: "italic",
+          }}
+        >
+          Click on an image to view it in detail.
+        </p>
         <div
           style={{
             display: "flex",
@@ -296,35 +337,59 @@ const Event2 = () => {
 
       <div className="eventExtra">
         <div className="extraTitle">
-<h1>Tutankhamun's Dagger</h1>
-<p>Tutankhamun’s iron dagger blade closely correlates with meteoric composition, including homogeneity. Originally discovered in 1925 in Tutankhamun’s tomb (14th C. BCE) by Howard Carter.</p>
-          <div style={{margin:'20px' ,display:"flex", justifyContent:'space-between'}}><motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
-            onClick={handleBackClick}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <h1>Tutankhamun's Dagger</h1>
+          <p>
+            Tutankhamun’s iron dagger blade closely correlates with meteoric
+            composition, including homogeneity. Originally discovered in 1925 in
+            Tutankhamun’s tomb (14th C. BCE) by Howard Carter.
+          </p>
+          <div
+            style={{
+              margin: "20px",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
           >
-            Previous Event
-          </motion.button><motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
-            onClick={handleEvent2click}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }} // Gold background and black text on hover
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Next Event
-          </motion.button>
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
+              onClick={handleBackClick}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Previous Event
+            </motion.button>
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }} // Black background and gold text
+              onClick={handleEvent2click}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }} // Gold background and black text on hover
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Next Event
+            </motion.button>
           </div>
         </div>
-        <div className="extraModel">
-<img src="images/DeWatermark.ai_1732022891054.png"  style={{width:"450px", borderRadius:'5px'}} alt="" />
+        <div className="extraModel border-none">
+          <img
+            src="images/DeWatermark.ai_1732022891054.png"
+            style={{ width: "450px", borderRadius: "5px" }}
+            alt=""
+          />
         </div>
       </div>
     </>

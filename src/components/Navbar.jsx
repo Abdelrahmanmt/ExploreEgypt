@@ -14,43 +14,45 @@ const Navbar = () => {
   ];
   return (
     <header className="py-4">
-      <nav className="navbar">
-        <div
-          onClick={() => setOpenMenu(true)}
-          className="lg:hidden cursor-pointer"
-        >
-          <Bars3Icon className="text-white w-6 h-6" />
-        </div>
-        <div className="navbar-menu">
-          <Link to="/">Logo</Link>
-        </div>
-        <ul
-          className={`fixed lg:static top-0 ${
-            openMenu ? "left-0 z-50" : "-left-full"
-          } px-10 py-20 lg:p-0 bg-black lg:bg-transparent transition-all duration-200 h-full lg:h-auto flex-col lg:flex-row w-full lg:w-auto flex items-start lg:items-center lg:justify-center gap-10 flex-1`}
-        >
+      <div className="container">
+        <nav className="navbar !px-0">
           <div
-            onClick={() => setOpenMenu(false)}
-            className="lg:hidden absolute right-10 cursor-pointer"
+            onClick={() => setOpenMenu(true)}
+            className="lg:hidden cursor-pointer"
           >
-            <XMarkIcon className="text-white w-6 h-6" />
+            <Bars3Icon className="text-white w-6 h-6" />
           </div>
-          {links.map((link) => (
-            <li>
-              <Link
-                to={link.to}
-                style={{
-                  color: location.pathname === link.to ? "#FFD400" : "",
-                }}
-                onClick={() => setOpenMenu(false)}
-                className="hover:text-[#FFD400] transition-colors duration-200"
-              >
-                {link.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+          <div className="navbar-menu">
+            <Link to="/">Logo</Link>
+          </div>
+          <ul
+            className={`fixed lg:static top-0 ${
+              openMenu ? "left-0 z-50" : "-left-full"
+            } px-10 py-20 lg:p-0 bg-black lg:bg-transparent transition-all duration-200 h-full lg:h-auto flex-col lg:flex-row w-full lg:w-auto flex items-start lg:items-center lg:justify-center gap-10 flex-1`}
+          >
+            <div
+              onClick={() => setOpenMenu(false)}
+              className="lg:hidden absolute right-10 cursor-pointer"
+            >
+              <XMarkIcon className="text-white w-6 h-6" />
+            </div>
+            {links.map((link) => (
+              <li>
+                <Link
+                  to={link.to}
+                  style={{
+                    color: location.pathname === link.to ? "#FFD400" : "",
+                  }}
+                  onClick={() => setOpenMenu(false)}
+                  className="hover:text-[#FFD400] transition-colors duration-200"
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

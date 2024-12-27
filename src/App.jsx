@@ -19,23 +19,21 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container">
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HeroSection />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/year-event" element={<YearEvent />} />
-            <Route path="/event2" element={<Event2 />} />
-            <Route path="/chatbot" element={<ChatBot />} />
-            <Route path="event4" element={<Event4 />} />
-            <Route path="event3" element={<Event3 />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="about" element={<About />} />
-          </Routes>
-        </AnimatePresence>
-        <Footer />
-      </div>
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HeroSection />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/year-event" element={<YearEvent />} />
+          <Route path="/event2" element={<Event2 />} />
+          <Route path="/chatbot" element={<ChatBot />} />
+          <Route path="event4" element={<Event4 />} />
+          <Route path="event3" element={<Event3 />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
+        </Routes>
+      </AnimatePresence>
+      <Footer />
     </div>
   );
 }

@@ -87,17 +87,18 @@ const Explore = () => {
             >
               <div id={event.id}>
                 <img
-                  width={"250px"}
-                  height={"250px"}
                   src={`./images/${event.pic}`}
                   alt={event.title}
-                  className="explore-image"
+                  className="h-[250px] w-full object-cover !rounded-br-0 !rounded-bl-0"
                 />
               </div>
-              <h3 className="event-title">{event.title}</h3>
-              <p className="event-subtitle">{event.subtitle}</p>
+              <h3 className="event-title truncate">{event.title}</h3>
+              <p className="event-subtitle line-clamp-6 pt-2">
+                {event.subtitle}
+              </p>
+
               <button
-                className="btn btn-rect-to-round btn-rect-to-round--black"
+                className="btn btn-rect-to-round btn-rect-to-round--black mt-10"
                 onClick={event.function}
               >
                 Explore More

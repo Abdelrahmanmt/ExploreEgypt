@@ -10,18 +10,20 @@ const Footer = () => {
   ];
   return (
     <footer className="py-10">
-      <ul className="flex items-center justify-center lg:justify-end gap-4 ">
-        {links.map((link) => (
-          <li key={link.id}>
-            <Link
-              to={link.to}
-              className="duration-200 transition-colors text-base opacity-[70%] hover:opacity-[100%] text-white "
-            >
-              {link.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="container">
+        <ul className="flex items-center justify-center lg:justify-end gap-4 ">
+          {links.map((link) => (
+            <li key={link.id}>
+              <Link
+                to={link.to}
+                className="duration-200 transition-colors text-base opacity-[70%] hover:opacity-[100%] text-white "
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </footer>
   );
 };

@@ -1,16 +1,15 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.css"; // Reuse HeroSection styles
 import { motion } from "framer-motion"; // Framer Motion for animations
 import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Event3 = () => {
   useEffect(() => {
     // Scroll to the top of the page when the component is mounted
-    window.scrollTo({top:0, behavior:'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   const mountRef = useRef(null); // Reference to the Three.js container
   const detailsRef = useRef(null); // Reference to the detailed section
@@ -25,7 +24,7 @@ const Event3 = () => {
   };
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate('/event2') // Smooth scroll to the detailed section
+    navigate("/event2"); // Smooth scroll to the detailed section
   };
 
   const openModal = (imageSrc) => {
@@ -48,7 +47,10 @@ const Event3 = () => {
     camera.position.set(0, 1.5, 4); // Adjust the camera to eye level and face the object directly
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Transparent background
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+    renderer.setSize(
+      mountRef.current.clientWidth,
+      mountRef.current.clientHeight
+    );
     mountRef.current.appendChild(renderer.domElement);
 
     // Add ambient light and directional light
@@ -112,8 +114,12 @@ const Event3 = () => {
     // Handle resizing
     const handleResize = () => {
       if (mountRef.current) {
-        renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-        camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
+        renderer.setSize(
+          mountRef.current.clientWidth,
+          mountRef.current.clientHeight
+        );
+        camera.aspect =
+          mountRef.current.clientWidth / mountRef.current.clientHeight;
         camera.updateProjectionMatrix();
       }
     };
@@ -169,25 +175,54 @@ const Event3 = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Ramses II, also known as "Ramses the Great," was one of ancient Egypt's most illustrious
-            and enduring rulers. His reign marked an era of monumental architecture, military
-            conquests, and unparalleled prosperity, making him a defining figure of the New Kingdom.
+            Ramses II, also known as "Ramses the Great," was one of ancient
+            Egypt's most illustrious and enduring rulers. His reign marked an
+            era of monumental architecture, military conquests, and unparalleled
+            prosperity, making him a defining figure of the New Kingdom.
           </motion.p>
-          <motion.button
-            className="hero-button"
-            style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
-            onClick={handleExploreClick}
-            whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            EXPLORE MORE
-          </motion.button>
+
+          <div className="flex items-center gap-4">
+            <motion.button
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
+              onClick={handleExploreClick}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              EXPLORE MORE
+            </motion.button>
+            <motion.div
+              className="hero-button"
+              style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
+              onClick={() => console.log("Hello Ethar")}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <Link
+                target="_blank"
+                to="https://maps.app.goo.gl/Kgm5xhQybyvUfzEm6"
+              >
+                Location
+              </Link>
+            </motion.div>
+          </div>
         </div>
         <motion.div
-          className="hero-images"
+          className="hero-images border-none"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
@@ -198,14 +233,13 @@ const Event3 = () => {
             style={{
               width: "100%",
               height: "850px",
-              borderWidth: "10px",
               borderRadius: "10px",
               overflow: "hidden",
             }}
           ></div>
         </motion.div>
       </motion.section>
-  
+
       {/* Detailed Section */}
       <section
         ref={detailsRef}
@@ -214,21 +248,33 @@ const Event3 = () => {
           textAlign: "center",
         }}
       >
-        <h2 className="eventTitle">Ramses II: Monumental Builder and Warrior</h2>
+        <h2 className="eventTitle">
+          Ramses II: Monumental Builder and Warrior
+        </h2>
         <p className="eventText">
-          Ramses II was a pharaoh of the 19th Dynasty whose reign spanned 66 years, making him one 
-          of Egypt's longest-reigning monarchs. Known for his military prowess, Ramses II led 
-          successful campaigns into Nubia, the Levant, and beyond, securing Egypt's borders and 
-          elevating its power on the global stage.
+          Ramses II was a pharaoh of the 19th Dynasty whose reign spanned 66
+          years, making him one of Egypt's longest-reigning monarchs. Known for
+          his military prowess, Ramses II led successful campaigns into Nubia,
+          the Levant, and beyond, securing Egypt's borders and elevating its
+          power on the global stage.
         </p>
         <p className="eventText">
-          His reign is best remembered for the monumental structures he commissioned, including the
-          temples at Abu Simbel, the Ramesseum, and additions to Karnak and Luxor. These marvels of 
-          engineering reflect his devotion to the gods and his ambition to immortalize his legacy 
-          in stone. Ramses II's treaty with the Hittites following the Battle of Kadesh is considered 
-          one of the earliest examples of a formal peace treaty in history.
+          His reign is best remembered for the monumental structures he
+          commissioned, including the temples at Abu Simbel, the Ramesseum, and
+          additions to Karnak and Luxor. These marvels of engineering reflect
+          his devotion to the gods and his ambition to immortalize his legacy in
+          stone. Ramses II's treaty with the Hittites following the Battle of
+          Kadesh is considered one of the earliest examples of a formal peace
+          treaty in history.
         </p>
-        <p style={{ textAlign: "center", color: "#888", marginTop: "10px", fontStyle: "italic" }}>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#888",
+            marginTop: "10px",
+            fontStyle: "italic",
+          }}
+        >
           Click on an image to view it in detail.
         </p>
         <div
@@ -263,7 +309,7 @@ const Event3 = () => {
           ))}
         </div>
       </section>
-  
+
       {/* Modal */}
       {modalImage && (
         <div
@@ -293,26 +339,38 @@ const Event3 = () => {
           />
         </div>
       )}
-  
+
       <div className="eventExtra">
         <div className="extraTitle">
           <h1>Ramses II’s Legacy</h1>
           <p>
-            Ramses II's legacy extends far beyond his lifetime. The temples, statues, and artifacts 
-            from his reign stand as a testament to Egypt’s artistic and architectural achievements. 
-            His name, inscribed in countless monuments, ensured his memory endured for millennia.
+            Ramses II's legacy extends far beyond his lifetime. The temples,
+            statues, and artifacts from his reign stand as a testament to
+            Egypt’s artistic and architectural achievements. His name, inscribed
+            in countless monuments, ensured his memory endured for millennia.
           </p>
           <p>
-            Known for his diplomacy, Ramses II's treaty with the Hittites laid the groundwork for 
-            peaceful relations between two ancient superpowers. His reign embodies a golden age of 
-            prosperity and innovation in Egyptian history.
+            Known for his diplomacy, Ramses II's treaty with the Hittites laid
+            the groundwork for peaceful relations between two ancient
+            superpowers. His reign embodies a golden age of prosperity and
+            innovation in Egyptian history.
           </p>
-          <div style={{ margin: "20px", display: "flex", justifyContent: "space-between" }}>
+          <div
+            style={{
+              margin: "20px",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
             <motion.button
               className="hero-button"
               style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
               onClick={handleBackClick}
-              whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -324,7 +382,11 @@ const Event3 = () => {
               className="hero-button"
               onClick={handleEvent3click}
               style={{ backgroundColor: "rgb(210, 174, 46,0.6)" }}
-              whileHover={{ scale: 1.1, backgroundColor: "#ffd700", color: "#000" }}
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "#ffd700",
+                color: "#000",
+              }}
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -335,7 +397,7 @@ const Event3 = () => {
           </div>
         </div>
         <div
-          className="extraModel"
+          className="extraModel border-none"
           style={{
             width: "100%",
             height: "400px",
@@ -346,8 +408,6 @@ const Event3 = () => {
       </div>
     </>
   );
-  
-  
 };
 
 export default Event3;
