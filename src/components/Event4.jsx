@@ -26,7 +26,7 @@ const Event4 = () => {
   };
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate('/year-event') // Smooth scroll to the detailed section
+    navigate('/event3') // Smooth scroll to the detailed section
   };
 
   const openModal = (imageSrc) => {
@@ -140,6 +140,9 @@ const Event4 = () => {
   return (
     <>
     <FloatingButton/>
+
+      
+
       <motion.section
         className="hero-section"
         variants={containerVariants}

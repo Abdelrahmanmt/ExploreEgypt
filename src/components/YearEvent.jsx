@@ -102,18 +102,7 @@ const YearEvent = () => {
             EXPLORE MORE
           </motion.button>
 
-          {/* Audio Playback Button */}
-          <motion.button
-            className="hero-button"
-            style={{
-              marginTop: "20px",
-              backgroundColor: isPlaying ? "#ff5555" : "rgb(210, 174, 46,0.6)",
-            }}
-            onClick={toggleAudioPlayback}
-            whileHover={{ scale: 1.1 }}
-          >
-            {isPlaying ? "Pause Voiceover" : "Play Voiceover"}
-          </motion.button>
+          
 
           {/* Hidden Audio Element */}
           <audio ref={audioRef} src="/audio/giza.mp3" preload="auto" />

@@ -11,7 +11,7 @@
   .artifact-viewer {
     width: 100%;
     max-width: 1000px;
-    height: 850px; /* Updated height */
+    height: 650px; /* Updated height */
     margin: 20px 0;
     border-radius: 10px;
     overflow: hidden;
