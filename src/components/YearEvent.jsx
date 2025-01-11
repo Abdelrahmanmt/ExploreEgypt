@@ -5,6 +5,7 @@ import { motion } from "framer-motion"; // Framer Motion for animations
 import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
+import FloatingPyr from "./FloatingPyr";
 
 const YearEvent = () => {
   const mountRef = useRef(null); // Reference to the Three.js container
@@ -53,6 +54,7 @@ const YearEvent = () => {
 
   return (
     <>
+      <FloatingPyr />
       <motion.section
         className="hero-section"
         variants={containerVariants}

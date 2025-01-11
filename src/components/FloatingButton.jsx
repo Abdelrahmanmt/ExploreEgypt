@@ -54,7 +54,7 @@ const FloatingButton = () => {
         className="floating-video"
         style={{ pointerEvents: "none" }} // Prevents the video from capturing clicks
       >
-        <source src="/audio/Thutmose3rd.mp4" type="video/mp4" />
+        <source src="/audio/thutmosemodel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </motion.div>

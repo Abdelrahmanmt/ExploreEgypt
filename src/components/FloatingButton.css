@@ -1,7 +1,7 @@
 .floating-button {
     position: fixed;
-    bottom: 20px; /* Adjust position */
-    right: 20px;
+    bottom: 33px; /* Adjust position */
+    right: 50px;
     width: 275px; /* Button size */
     height: 275px;
     border-radius: 50%; /* Circular button */

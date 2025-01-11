@@ -6,6 +6,7 @@ import * as THREE from "three"; // Import Three.js
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; // Loader for 3D models
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"; // For camera controls
 import { useNavigate } from "react-router-dom";
+import FloatingTut from "./FloatingTut";
 
 const Event2 = () => {
   useEffect(() => {
@@ -138,6 +139,7 @@ const Event2 = () => {
 
   return (
     <>
+      <FloatingTut />
       <motion.section
         className="hero-section"
         variants={containerVariants}
